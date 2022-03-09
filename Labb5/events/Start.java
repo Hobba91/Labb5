@@ -10,13 +10,14 @@ public class Start extends Event{
     //Gör så att start utförs vid tiden starten av programmet
     //public double time = 0.0;
 
-    public Start(double time) {
+    public Start() {
         this.time = 0.0;
     }
 
     @Override
-    public EventQueue doMe() {
-        Event arrival = new Arrival(8);
+    public void doMe(EventQueue queue, double random) {
+        Event arrival = new Arrival(random);
+        queue.add(arrival);
         
     }
 
