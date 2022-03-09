@@ -2,6 +2,7 @@ package Labb5.events;
 
 import Labb5.simulator.Event;
 import Labb5.state.CashState;
+import Labb5.simulator.EventQueue;
 
 public class Arrival extends Event{
 
@@ -10,7 +11,7 @@ public class Arrival extends Event{
     }
 
     @Override
-    public void doMe() {
+    public void doMe(EventQueue queue, double random) {
        
     }
 
