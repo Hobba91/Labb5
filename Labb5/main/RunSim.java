@@ -3,11 +3,12 @@ package Labb5.main;
 import org.w3c.dom.events.EventException;
 
 import Labb5.events.Start;
-//import Labb5.events.Stop;
-//import Labb5.events.Start;
-//import Labb5.events.Close;
+import Labb5.events.Stop;
+import Labb5.events.Start;
+import Labb5.events.Close;
 import Labb5.simulator.*;
-import Labb5.state.CashState;
+import Labb5.state.StoreState;
+
 
 public class RunSim {
 
@@ -35,8 +36,7 @@ public class RunSim {
 
 
         //Skapar en state
-        SimState state = new SimState(LOW_COLLECTION_TIME,HIGH_COLLECTION_TIME,LOW_PAYMENT_TIME,
-                                      HIGH_PAYMENT_TIME,SEED,END_TIME,STOP_TIME,CASHIERS,MAXPEOPLE);
+        SimState state = new SimState();
         
         //Skapar en simulator med state och queue
         Simulator simulator = new Simulator(queue, state);
@@ -44,11 +44,17 @@ public class RunSim {
         //skapar en view
         SimView view = new SimView();
 
-        queue.addEvent(Start(queue));
-        queue.addEvent(Close);
-        queue.addEvent(Stop);
+        //Skapar start,close och stop händelserna
+        Event start = new Start();
+        Event close = new Close(END_TIME);
+        Event stop = new Stop(STOP_TIME);
 
-        Simulator.run();
+        //Lägger int start,close och stop händelserna i händelsekön
+        queue.add(close);
+        queue.add(start);
+        queue.add(stop);
+
+        Simulator.Run();
 
         
 
