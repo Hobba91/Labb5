@@ -8,7 +8,7 @@ public abstract class Event {
     protected double time;
     
     
-    abstract public void doMe(EventQueue queue, double random);    //utför eventet
+    abstract public void doMe(EventQueue queue, SimState state);    //utför eventet
     abstract public double getTime(); //få fram tiden händelsen ska inträffa
     
 }

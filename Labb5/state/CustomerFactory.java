@@ -1,12 +1,11 @@
 package Labb5.state;
 
+import Labb5.state.Customer;
+
 public class CustomerFactory {
     int customers =0;
-
-    public void createCustom
-        Customer customer = new Customer(customers);er(){
+    public void createCustomer () {
+        Customer customer = new Customer(customers);
         customers++;
-
-
     }
 }

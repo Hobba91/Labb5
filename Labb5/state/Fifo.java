@@ -71,4 +71,9 @@ class FIFO {
     public int getPeopleInLineTotal() {
         return peopleInLineTotal;
     }
+    //tiden det tar gånger hur lång kön är.
+    public void incinLineTime(double time) {
+        inLineTime += (time * queue.size());
+        
+    }
 }

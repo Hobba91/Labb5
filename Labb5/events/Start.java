@@ -4,19 +4,19 @@ import Labb5.main.RunSim;
 import Labb5.simulator.Event;
 import Labb5.simulator.EventQueue;
 import Labb5.simulator.Simulator;
+import Labb5.state.StoreState;
+import Labb5.simulator.SimState;
 
 public class Start extends Event{
-    
-    //Gör så att start utförs vid tiden starten av programmet
-    //public double time = 0.0;
+   private StoreState store;
 
-    public Start() {
-        this.time = 0.0;
-    }
+   public Start(){
+           this.time = 0.0;
+   }     
 
-    @Override
-    public void doMe(EventQueue queue, double random) {
-        Event arrival = new Arrival(random);
+   public void doMe(EventQueue queue, SimState state) {
+        this.store = (StoreState)state;
+        Event arrival = new Arrival(store.getArrivalTime().next()+this.time);
         queue.add(arrival);
         
     }
