@@ -54,7 +54,7 @@ public class RunSim {
         queue.add(start);
         queue.add(stop);
 
-        Simulator.Run();
+        //Simulator.Run();
 
         
 

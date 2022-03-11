@@ -2,8 +2,7 @@ package Labb5.simulator;
 
 import java.util.Observable;
 import java.util.Observer;
-import Labb5.simulator.SimState; //kan behöva vara simstate
-
+import Labb5.simulator.SimState;
 public class SimView  implements Observer{
     private SimState state;
     public SimView() {
@@ -11,7 +10,9 @@ public class SimView  implements Observer{
 
     }
     @Override
-    public void update(Observable arg0, Object f){}
+    public void update(Observable arg0, Object f){
+        
+    }
 }
 
   

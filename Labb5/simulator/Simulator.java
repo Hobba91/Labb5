@@ -1,7 +1,5 @@
 package Labb5.simulator;
 
-import Labb5.main.RunSim;
-import Labb5.events.Start;
 
 public class Simulator {
     private SimState state;
@@ -18,10 +16,6 @@ public class Simulator {
 
     // loopar allting så länge SimStop är falsk.
     public void Run(){
-        
-        
-
-
         while(state.getSimStop() != true){
             Event currentEvent = queue.first();
             queue.removeFirst();

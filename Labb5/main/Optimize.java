@@ -8,7 +8,7 @@ public class Optimize {
 
     }
 
-    private static StoreState method,(int cash, long seed) {
+    private static StoreState method(int cash, long seed) {
 
         //variables
         final double[] PICK_TIME = { LOW_COLLECTION_TIME, HIGH_COLLECTION_TIME};

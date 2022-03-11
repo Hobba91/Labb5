@@ -1,9 +1,7 @@
 package Labb5.events;
 
-import Labb5.main.RunSim;
 import Labb5.simulator.Event;
 import Labb5.simulator.EventQueue;
-import Labb5.simulator.Simulator;
 import Labb5.state.StoreState;
 import Labb5.simulator.SimState;
 
@@ -16,6 +14,8 @@ public class Start extends Event{
 
    public void doMe(EventQueue queue, SimState state) {
         this.store = (StoreState)state;
+        store.update(this);
+        store.SetOpen(true);
         Event arrival = new Arrival(store.getArrivalTime().next()+this.time);
         queue.add(arrival);
         
@@ -24,6 +24,11 @@ public class Start extends Event{
     @Override
     public double getTime() {
         return time;
+    }
+
+    @Override
+    public String getName() {
+        return "Start";
     }
     
 }

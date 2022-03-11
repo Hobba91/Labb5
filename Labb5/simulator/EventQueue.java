@@ -8,7 +8,7 @@ public class EventQueue {
 		Event temp;
 		queue[queue.length] = event;
 		for(int i=1; i<queue.length; i++){
-			for(int j=1; j < 0; j--){
+			for(int j=1; j > 0; j--){
 				if(queue[j].getTime() < queue[j-1].getTime()){
 					temp = queue[j];
 					queue[j] = queue[j-1];

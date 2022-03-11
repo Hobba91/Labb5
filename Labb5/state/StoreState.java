@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import Labb5.state.ExponentialRandomStream;
 import Labb5.state.UniformRandomStream;
 import Labb5.simulator.SimState;
+import Labb5.simulator.Event;
 
 public class StoreState extends SimState{
     private CustomerFactory customerFactory;
@@ -18,22 +19,28 @@ public class StoreState extends SimState{
     private double[] K;
     private int missedCust = 0;
     private String name = "";
-    private ArrayList<Integer>IDofCust = new <Integer>ArrayList();
+    private ArrayList<Integer>idOfCust = new <Integer>ArrayList();
     private boolean open = false;
     private int cashiers;
     private String currentID = "";
     private double currentTime = 0.0;
     private int totAmOfRegi;
+    private int vacantRegi;
     private ExponentialRandomStream arrivalTime;
     private UniformRandomStream pickTime;
     private UniformRandomStream payTime;
-    private int custdone;
+    private int custDone = 0;
+    private double vacantTime = 0;
+    private int amountOfCustQueue = 0;
+    private Event currentEvent;
+
     
 
     
 
     public StoreState(int cashiers, int maxpeople, double lambda, double[] P, double[] K, long seed){
         this.totAmOfRegi = cashiers;
+        this.vacantRegi = this.totAmOfRegi;
         this.maxpeople = maxpeople;
         this.lambda = lambda;
         this.P = P;
@@ -66,6 +73,15 @@ public class StoreState extends SimState{
     public int gettotAmOfRegi(){
         return totAmOfRegi;
     }
+    public int getVacantRegi(){
+        return vacantRegi;
+    }
+    public void incVacantRegi(){
+        this.vacantRegi++;
+    }
+    public void decVacantRegi(){
+        this.vacantRegi--;
+    }
     public String getQueue(){
         return inLine.toString();
     }
@@ -81,7 +97,7 @@ public class StoreState extends SimState{
     public long getSeed(){
         return seed;
     }
-    public int getNextInLine(){
+    public Customer getNextInLine(){
         return inLine.first();
     }
     public int getpeopleInStore(){
@@ -93,11 +109,8 @@ public class StoreState extends SimState{
     public int getMissed(){
         return missedCust;
     }
-    public String getname(){
-        return name;
-    }
-    //public int getIDofCust(int num){
-    //    return IDofCust.get(num).getID();
+     //public int getIDofCust(int num){
+    ////    return IDofCust.get(num).getID();
     //}
 
     public void setname(String nam){
@@ -124,9 +137,9 @@ public class StoreState extends SimState{
     }
     public void decpeopleInStore() {
         peopleInStore--;
-        custdone++;
+        custDone++;
     }
-    public void addinLine(int ID) {
+    public void addinLine(Customer ID) {
         inLine.add(ID);
     }
     public boolean Lineisempty() {
@@ -148,9 +161,46 @@ public class StoreState extends SimState{
         return payTime;
     }
     
+    public void update(Event event) {
+        this.currentEvent = event;
+
+        setChanged();
+        notifyObservers();
+    }
+
+    public Event getCurrentEvent(){
+        return currentEvent;
+    }
+    
     //Returnerar true om affären är full
     public boolean isFull(){
         return(peopleInStore>=maxpeople);
     }
+
+    public int getCustDone(){
+        return custDone;
+    }
+
+    public double getVacantTime(){
+        return vacantTime;
+    }
+
+    public void incVacantTime(double time){
+        vacantTime += time;
+    }
+
+    public Customer createCustomer (){
+        Customer customer = customerFactory.createCustomer();
+        return customer;
+    }
+
+    public int getAmountOfCustQueue(){
+        return amountOfCustQueue;
+    }
+
+    public void incAmountOfCustQueue(){
+        amountOfCustQueue++;
+    }
+
 
 }

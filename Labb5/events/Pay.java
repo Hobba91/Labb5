@@ -2,15 +2,31 @@ package Labb5.events;
 
 import Labb5.simulator.Event;
 import Labb5.simulator.EventQueue;
+import Labb5.simulator.SimState;
+import Labb5.state.StoreState;
+import Labb5.state.Customer;
 
 public class Pay extends Event{
 	StoreState store;
+	Customer customer;
+
+	public Pay(double time, Customer customer){
+		this.time = time;
+		this.customer = customer;
+	}
 
 	@Override
 	public void doMe(EventQueue queue, SimState state) {
-
 		store = (StoreState) state; 
-		store.getCashiers();
+		store.update(this);
+		store.decpeopleInStore();
+		store.incVacantRegi();
+		if(!store.Lineisempty()){
+			Event pay = new Pay(store.getPayTime().next()+this.time, store.getNextInLine());
+            queue.add(pay);
+			store.decVacantRegi();
+			store.removefirstinLine();
+		}
 
 		
 
@@ -20,8 +36,16 @@ public class Pay extends Event{
 
 	@Override
 	public double getTime() {
-		// TODO Auto-generated method stub
-		return 0;
+		return time;
 	}
+
+	@Override
+    public String getName() {
+        return "Betalning";
+    }
+
+	public Customer getCustomer() {
+        return this.customer;
+    }
     
 }
