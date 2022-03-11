@@ -8,7 +8,6 @@ import Labb5.state.Customer;
 
 public class Arrival extends Event{
     private StoreState store;
-    private int kund;
     Customer customer;
 
     public Arrival(double time) {
