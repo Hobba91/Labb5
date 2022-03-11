@@ -2,11 +2,12 @@ package Labb5.state;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import Labb5.state.Customer;
 
 class FIFO {
     private int maxSize = 0;
     private double inLineTime = 0.0;
-    ArrayList<Integer> queue = new ArrayList<Integer>();
+    ArrayList<Customer> queue = new ArrayList<Customer>();
     private int peopleInLineTotal = 0;
 
     //storleken på vår kö
@@ -25,7 +26,7 @@ class FIFO {
     }
 
     //ger första objektet i kön
-    public Integer first() {
+    public Customer first() {
         if (queue.size() == 0) {
             throw new NoSuchElementException("There is no element first in queue");
         }
@@ -46,7 +47,7 @@ class FIFO {
     }
     
     //lägger till ett objekt och ändrar variabel maxsize
-    public void add(Integer item) {
+    public void add(Customer item) {
         queue.add(item);
         peopleInLineTotal++;
         if (queue.size() > maxSize) {
