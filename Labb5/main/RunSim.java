@@ -9,6 +9,7 @@ import Labb5.events.Close;
 import Labb5.simulator.*;
 import Labb5.state.StoreState;
 import Labb5.simulator.Event;
+import Labb5.view.StoreView;
 
 
 public class RunSim {
@@ -17,14 +18,15 @@ public class RunSim {
     public static final double L = 1;       // kunder är kunder per tidsenhet (LAMBDA).
     public static final double LOW_COLLECTION_TIME = 0.5d; // min tiden det tar att plocka upp varor.
     public static final double HIGH_COLLECTION_TIME = 1d; // max tiden det tar att plocka upp varor.
+    public static final double[] PICKTIME = {LOW_COLLECTION_TIME, HIGH_COLLECTION_TIME}; 
     public static final double LOW_PAYMENT_TIME = 2d;   // min tiden det tar att betala i kassan.
     public static final double HIGH_PAYMENT_TIME = 3d; // max tiden det tar att betala i kassan.
+    public static final double[] PAYMENT = {LOW_PAYMENT_TIME, HIGH_PAYMENT_TIME}; 
     public static final int SEED = 1234;                // ett "frö" för att slumpa värden.
     public static final double END_TIME = 10.0d;   // 
     public static final double STOP_TIME = 999.0d; //
-
-    public static final int CASHIERS = 5;   // Antalet kassor i simuleringen.
-    public static final int MAXPEOPLE = 10; // Max antalet kunder som rymms i affären.
+    public static final int CASHIERS = 2;   // Antalet kassor i simuleringen.
+    public static final int MAXPEOPLE = 5; // Max antalet kunder som rymms i affären.
 
 
     public static void main(String[] args){
@@ -38,12 +40,16 @@ public class RunSim {
         SimState state = new SimState();
 
         //skapar en view
-        SimView view = new SimView();
+       
+
+        StoreState storeState = new StoreState(CASHIERS,MAXPEOPLE,L,PICKTIME,PAYMENT,SEED);
+
+        StoreView view = new StoreView(storeState);
 
         //Skapar start,close och stop händelserna
-        Event start = new Start();
-        Event close = new Close(END_TIME);
-        Event stop = new Stop(STOP_TIME);
+        Event start = new Start(storeState);
+        Event close = new Close(END_TIME,storeState);
+        Event stop = new Stop(STOP_TIME,storeState);
 
         //Lägger int start,close och stop händelserna i händelsekön
         queue.add(close);

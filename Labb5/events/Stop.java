@@ -3,18 +3,21 @@ package Labb5.events;
 import Labb5.simulator.Event;
 import Labb5.simulator.EventQueue;
 import Labb5.simulator.SimState;
+import Labb5.state.StoreState;
 
 public class Stop extends Event{
-    SimState store;
+    StoreState store;
 
-    public Stop(double time){
+    public Stop(double time, StoreState store){
         this.time = time;
+        this.store = store;
     }
 
     @Override
     public void doMe(EventQueue queue, SimState state) {
-        this.store = state;
+        store.update(this);
         store.SetSim();
+        
         
         
     }

@@ -8,15 +8,18 @@ import Labb5.simulator.SimState;
 public class Start extends Event{
    private StoreState store;
 
-   public Start(){
+   public Start(StoreState store){
            this.time = 0.0;
+           this.store = store;
+
    }     
 
-   public void doMe(EventQueue queue, SimState state) {
-        this.store = (StoreState)state;
+
+   public void doMe( EventQueue queue, SimState state) {
+       store.setCurrentCustomer(null);
         store.update(this);
         store.SetOpen(true);
-        Event arrival = new Arrival(store.getArrivalTime().next()+this.time);
+        Event arrival = new Arrival(store.getArrivalTime().next()+this.time,this.store);
         queue.add(arrival);
         
     }
@@ -30,5 +33,6 @@ public class Start extends Event{
     public String getName() {
         return "Start";
     }
+
     
 }

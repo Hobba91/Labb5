@@ -5,8 +5,9 @@ import java.util.Observer;
 import Labb5.simulator.SimState;
 public class SimView  implements Observer{
     private SimState state;
-    public SimView() {
-        //state.addObserver(this);
+    public SimView(SimState state) {
+        this.state = state;
+        state.addObserver(this);
 
     }
     @Override

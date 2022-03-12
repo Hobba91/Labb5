@@ -33,6 +33,9 @@ public class StoreState extends SimState{
     private double vacantTime = 0;
     private int amountOfCustQueue = 0;
     private Event currentEvent;
+    private Customer currentCustomer;
+    private double LastTime = 0;
+    private double queue = 0.0;
 
     
 
@@ -49,12 +52,20 @@ public class StoreState extends SimState{
         this.arrivalTime = new ExponentialRandomStream(lambda, seed);
         this.pickTime = new UniformRandomStream(P[0], P[1], seed);
         this.payTime = new UniformRandomStream(K[0], K[1], seed);
+        this.customerFactory = new CustomerFactory(0);
      
     }
 
     //kollar om affären är öppen eller stängd.
     public boolean getOpen(){
       return open;
+    }
+    public String getOpenString(){
+        if(getOpen()){
+            return "Ö";
+        }else{
+            return "S";
+        }
     }
     //sätt värdet på open variabeln. (stäng butiken eller öppna den.)
     public void SetOpen (boolean newOpen){
@@ -108,6 +119,9 @@ public class StoreState extends SimState{
     }
     public int getMissed(){
         return missedCust;
+    }
+    public double getQueueTime(){
+        return inLine.getInLineTime();
     }
      //public int getIDofCust(int num){
     ////    return IDofCust.get(num).getID();
@@ -163,9 +177,11 @@ public class StoreState extends SimState{
     
     public void update(Event event) {
         this.currentEvent = event;
-
+        vacantTime += (currentEvent.getTime()-LastTime)*getVacantRegi();
+        incinLineTime(currentEvent.getTime()-LastTime);
         setChanged();
         notifyObservers();
+        LastTime = this.currentEvent.getTime();
     }
 
     public Event getCurrentEvent(){
@@ -200,6 +216,26 @@ public class StoreState extends SimState{
 
     public void incAmountOfCustQueue(){
         amountOfCustQueue++;
+    }
+
+    public void setCurrentCustomer(Customer customer){
+        this.currentCustomer = customer;
+    }
+
+    public Customer getCurrentCustomer(){
+        return currentCustomer;
+    }
+
+    public int getQueueAmount(){
+        return inLine.getPeopleInLineTotal();
+    }
+
+    public int[] getFifoId(){
+        int[] id= new int[inLine.size()];
+        for(int i=0;i<inLine.size();i++){
+            id[i] = inLine.first().getID();
+        }
+        return id;
     }
 
 

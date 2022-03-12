@@ -8,13 +8,14 @@ import Labb5.state.StoreState;
 public class Close extends Event{
     StoreState store;
 
-    public Close(double time) {
+    public Close(double time, StoreState store) {
         this.time = time; 
+        this.store = store;
     }
 
     @Override
     public void doMe(EventQueue queue, SimState state) {
-        store = (StoreState) state;
+        store.setCurrentCustomer(null);
         store.update(this);
         store.SetOpen(false); 
     }

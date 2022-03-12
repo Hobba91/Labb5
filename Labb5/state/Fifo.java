@@ -67,10 +67,13 @@ class FIFO {
     public double getInLineTime() {
         return inLineTime;
     }
+    public Customer getinline(){
+        return queue;
+    }
 
     //hur många som är i kö
     public int getPeopleInLineTotal() {
-        return peopleInLineTotal;
+        return queue.size();
     }
     //tiden det tar gånger hur lång kön är.
     public void incinLineTime(double time) {

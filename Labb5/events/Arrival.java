@@ -10,25 +10,26 @@ public class Arrival extends Event{
     private StoreState store;
     Customer customer;
 
-    public Arrival(double time) {
+    public Arrival(double time, StoreState store) {
         this.time = time;
+        this.store = store;
         
     }
 
     @Override
     public void doMe(EventQueue queue, SimState state) {
-        this.store = (StoreState)state;
-        store.update(this);
         customer = store.createCustomer();
+        store.setCurrentCustomer(customer);
+        store.update(this);
         if(store.getOpen()){
             if(!store.isFull()){
-                Event pickUp = new PickUp(store.getPickTime().next()+this.time,customer);
+                Event pickUp = new PickUp(store.getPickTime().next()+this.time,customer,this.store);
                 queue.add(pickUp);
                 store.incpeopleInStore();
             }else{
                 store.incmissedCust();
             }
-            Event arrival = new Arrival(store.getArrivalTime().next()+this.time);
+            Event arrival = new Arrival(store.getArrivalTime().next()+this.time,this.store);
             queue.add(arrival);
         }
 

@@ -10,19 +10,20 @@ public class Pay extends Event{
 	StoreState store;
 	Customer customer;
 
-	public Pay(double time, Customer customer){
+	public Pay(double time, Customer customer, StoreState store){
 		this.time = time;
 		this.customer = customer;
+		this.store = store;
 	}
 
 	@Override
 	public void doMe(EventQueue queue, SimState state) {
-		store = (StoreState) state; 
+		store.setCurrentCustomer(customer);
 		store.update(this);
 		store.decpeopleInStore();
 		store.incVacantRegi();
 		if(!store.Lineisempty()){
-			Event pay = new Pay(store.getPayTime().next()+this.time, store.getNextInLine());
+			Event pay = new Pay(store.getPayTime().next()+this.time, store.getNextInLine(), store);
             queue.add(pay);
 			store.decVacantRegi();
 			store.removefirstinLine();
