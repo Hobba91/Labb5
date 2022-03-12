@@ -8,6 +8,7 @@ import Labb5.events.Start;
 import Labb5.events.Close;
 import Labb5.simulator.*;
 import Labb5.state.StoreState;
+import Labb5.simulator.Event;
 
 
 public class RunSim {
@@ -32,14 +33,9 @@ public class RunSim {
 
         //Skapar en kö där vio sparar event och en state.
         EventQueue queue = new EventQueue();
-        
-
 
         //Skapar en state
         SimState state = new SimState();
-        
-        //Skapar en simulator med state och queue
-        Simulator simulator = new Simulator(queue, state);
 
         //skapar en view
         SimView view = new SimView();
@@ -54,7 +50,9 @@ public class RunSim {
         queue.add(start);
         queue.add(stop);
 
-        //Simulator.Run();
+        //Skapar en simulator med state och queue
+        Simulator simulator = new Simulator(queue, state);
+
 
         
 

@@ -10,6 +10,7 @@ public class Simulator {
 
         this.queue = queue;
         this.state = state;
+        Run();
 
     }
     

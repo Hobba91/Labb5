@@ -6,7 +6,7 @@ import Labb5.simulator.SimState;
 public class SimView  implements Observer{
     private SimState state;
     public SimView() {
-        state.addObserver(this);
+        //state.addObserver(this);
 
     }
     @Override

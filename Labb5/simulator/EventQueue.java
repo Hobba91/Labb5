@@ -1,26 +1,26 @@
 package Labb5.simulator;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class EventQueue {
-    public Event queue[] = new Event[1000];
+    ArrayList<Event> queue = new ArrayList<Event>();
 	public void add(Event event) {
 		Event temp;
-		queue[queue.length] = event;
-		for(int i=1; i<queue.length; i++){
-			for(int j=1; j > 0; j--){
-				if(queue[j].getTime() < queue[j-1].getTime()){
-					temp = queue[j];
-					queue[j] = queue[j-1];
-					queue[j-1] = temp;
+		queue.add(event);
+		for(int i=1; i < queue.size(); i++){
+			for(int j=i; j > 0; j--){
+				if(queue.get(j).getTime() < queue.get(j-1).getTime()){
+					temp = queue.get(j);
+					queue.set(j,queue.get(j-1));
+					queue.set(j-1,temp);
 				}
 			}
 		}
-		
 	}
 
     public boolean isEmpty() {
-		if (queue.length <= 0) {
+		if (queue.size() <= 0) {
 			return true;
 		} else {
 			return false;
@@ -31,13 +31,14 @@ public class EventQueue {
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 		} else {
-			return queue[0];
+			return queue.get(0);
 		}
 	}
 	public void removeFirst(){
-		for(int i=0; i<queue.length; i++){
-			queue[i]=queue[i+1];
-		}
+		//for(int i=0; i<queue.size(); i++){
+		//	queue.set(i, queue.get(i+1));
+		//}
+		queue.remove(0);
 	}
     
 }
