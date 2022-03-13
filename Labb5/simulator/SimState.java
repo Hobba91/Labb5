@@ -3,23 +3,34 @@ package Labb5.simulator;
 import java.util.Observable;
 
 /*
-Class that 
+*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+*/
 
+/*
+The generall state that will start and stop the simulation.
 */ 
 
 public class SimState extends Observable {
 
-    private boolean simStop;  // är en "nödbroms" som stoppar simuleringen om den blir sann. 
+    private boolean simStop; 
 
-    // En get metod för att kunna kolla om simuleringen ska stoppas.
+    /*
+    method to see if the simulation should continue or be stopped.
+    return simStop, 
+    */ 
     public boolean getSimStop (){
         return simStop;
     }
-    // metod för att stoppa simuleringen.
+    /*
+    method that stops the simulation
+    */
     public void SetSim(){
         simStop = true;
     }
-    //uppdaterar observers
+    /*
+    method used to update variables when a new event takes place.
+    @param event, the current event that is taking place.
+    */
     public void update(Event event){
         setChanged();
         notifyObservers();

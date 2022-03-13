@@ -1,31 +1,123 @@
 package Labb5.main;
 
-import java.util.random;
+import Labb5.state.StoreState;
+import Labb5.events.Close;
+import Labb5.events.Start;
+import Labb5.events.Stop;
+import Labb5.simulator.*;
+
+/*
+*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+*/
+
+import java.util.Random;
 
 public class Optimize {
 
     public static void main(String[] args) {
+        //System.out.print(RequiredCheckout(1234));
+        RandomRun(13);
+        //OptimizeRun(4,1234);
 
     }
 
-    private static StoreState method(int cash, long seed) {
+    /*
+    @param runs the simulator with the decided parameters
+    @returns specificstate
+    */ 
+    private static StoreState OptimizeRun(int cash, long seed) {
 
-        //variables
-        final double[] PICK_TIME = { LOW_COLLECTION_TIME, HIGH_COLLECTION_TIME};
-        final double[] PAY_TIME = {LOW_PAYMENT_TIME, HIGH_COLLECTION_TIME};
+        //variabler
+        final int M = 7;
+        final double L = 3;
+        final double[] PICK_TIME = { 0.6d, 0.9d};
+        
+        final double[] PAY_TIME = {0.35d,0.6d};
+        final double END_TIME = 8.0d;   // 
+        final double STOP_TIME = 999.0d; //
+        
 
-        //creates a state refrence
-        StoreState specificstate = new StoreState();
+
+        //skapar en state referens
+        StoreState specificstate = new StoreState(cash, M, L, PICK_TIME, PAY_TIME, seed);
 
         
         EventQueue queue = new EventQueue();
-        State state = new State();
-        Simulator sim = new Simulator(queue, state)
+        SimState state = new SimState();
+        //skaper ingen StoreView
 
-        StartEvent startevent = new Startevent(specificstate, queue)
+        Start start = new Start(specificstate);
+        Close close = new Close(END_TIME, specificstate);
+        Stop stop = new Stop(STOP_TIME, specificstate);
+
+        queue.add(start);
+        queue.add(close);
+        queue.add(stop);
+
+        Simulator sim = new Simulator(queue, state);
+
+        sim.Run();
+
+        return specificstate;
 
 
 
     }
+
+    /*
+    @param Runs a loop with a set seed and tests what amount of cashierss are the optimal nuber
+    @returns registeramount
+    */
+
+    private static int RequiredCheckout(long seed){
+        StoreState state;
+        int miss = 999999;
+        int registeramount = 0;
+
+        //cash är antalet kassor vi går igenom
+        for (int cash = 100; cash > 1; cash--){
+            state = OptimizeRun(cash, seed);
+
+            if (state.getMissed() > miss){
+                break;
+            }
+            miss = state.getMissed();
+            registeramount = cash;
+
+        }
+        return registeramount;
+    }
+    
+    /*
+    @param Creates multiple random nuber and sets them as seeds in RequiredCheckout, after that we svae what amount of cashiers was the best
+    */
+    private static void RandomRun(int seed){
+        Random random = new Random(seed);
+        int count = 0;
+        int registeramount = 1;
+
+        while (true) {
+            int kort = random.nextInt();
+            int kortas = RequiredCheckout(kort);
+            if (kortas > registeramount) {
+                count = 0;
+                registeramount = kortas;
+            }else{
+                count++;
+            }
+
+            if (count >= 100){
+                break;
+            }
+
+        }
+
+        //prints out the best amount of cashiers for the set parimiters
+        System.out.print("Bästa kassaantal är : " + registeramount);
+
+    }
+
+
+
     
 }
