@@ -1,10 +1,14 @@
-
 package Labb5.simulator;
- 
 
+/*
+*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+*/
+ 
+/*
+A abstract class that determines how all events should "behave".
+*/
 public abstract class Event {
 
-    //EventQueue queue;
     protected double time;
     
     abstract public void doMe(EventQueue queue, SimState state);    //utför eventet

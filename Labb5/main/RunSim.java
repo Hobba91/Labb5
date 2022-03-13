@@ -11,7 +11,13 @@ import Labb5.state.StoreState;
 import Labb5.simulator.Event;
 import Labb5.view.StoreView;
 
+/*
+*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+*/
 
+/*
+runs the standard simulation with a set amount of variables, that will also print out every event that happens.
+*/
 public class RunSim {
 
     public static final int M = 5; //
@@ -55,9 +61,12 @@ public class RunSim {
         queue.add(close);
         queue.add(start);
         queue.add(stop);
+        
 
         //Skapar en simulator med state och queue
         Simulator simulator = new Simulator(queue, state);
+
+        simulator.Run();
 
 
         

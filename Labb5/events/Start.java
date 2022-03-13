@@ -5,16 +5,31 @@ import Labb5.simulator.EventQueue;
 import Labb5.state.StoreState;
 import Labb5.simulator.SimState;
 
+/*
+*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+*/
+
+/*
+Class that starts everything. Will open the store and create new arrival event.
+*/
 public class Start extends Event{
    private StoreState store;
 
+    /*
+    a constructor that sets the start time also adds a store.
+    @param store, the store being used.
+    */
    public Start(StoreState store){
            this.time = 0.0;
            this.store = store;
 
    }     
 
-
+    /*
+    starts the simulation
+    @param queue, the eventqueue.
+    @param state, the state being used.
+    */
    public void doMe( EventQueue queue, SimState state) {
        store.setCurrentCustomer(null);
         store.update(this);
@@ -24,11 +39,16 @@ public class Start extends Event{
         
     }
 
+    /*
+    @return returns the currnt time
+    */
     @Override
     public double getTime() {
         return time;
     }
-
+    /*
+    @return returns the name of the class
+    */
     @Override
     public String getName() {
         return "Start";
