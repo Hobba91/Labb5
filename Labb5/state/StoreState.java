@@ -233,7 +233,7 @@ public class StoreState extends SimState{
     public int[] getFifoId(){
         int[] id= new int[inLine.size()];
         for(int i=0;i<inLine.size();i++){
-            id[i] = inLine.first().getID();
+            id[i] = inLine.getCustomer(i).getID();
         }
         return id;
     }

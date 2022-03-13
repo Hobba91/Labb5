@@ -33,6 +33,13 @@ class FIFO {
         return queue.get(0);
     }
 
+    public Customer getCustomer(int n) {
+        if (queue.size() == 0) {
+            throw new NoSuchElementException("There is no element first in queue");
+        }
+        return queue.get(n);
+    }
+
     //gör elementen i kön till en lång sträng
     public String toString() {
         String string = "[";

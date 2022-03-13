@@ -41,7 +41,7 @@ public class StoreView extends SimView{
         System.out.println("Frö, f...................:" + store.getSeed());
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
-        System.out.println(" Tid   Händelse   Kund   ?   led   ledT   I   $   :-(   köat   köT   köar   [Kassakö..]");
+        System.out.println("Tid"+"\t"+"Händelse"+"\t"+"Kund"+"\t"+"?"+"\t"+"led"+"\t"+"ledT"+"\t"+"I"+"\t"+"$"+"\t"+":-("+"\t"+"köat"+"\t"+"köT"+"\t"+"köar"+"\t"+"[Kassakö..]");
     }
     public void printResults (){
         System.out.println("RESULTAT");
