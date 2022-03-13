@@ -11,11 +11,11 @@ import Labb5.state.StoreState;
 import Labb5.simulator.Event;
 import Labb5.view.StoreView;
 
-/*
-*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+/** 
+*@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
-/*
+/** 
 runs the standard simulation with a set amount of variables, that will also print out every event that happens.
 */
 public class RunSim {
