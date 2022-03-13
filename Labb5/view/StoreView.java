@@ -57,30 +57,36 @@ public class StoreView extends SimView{
             System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName());
         }
         else if(store.getCurrentEvent() instanceof Close){
-            System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"   \t---" +"\t"+store.getOpenString()+ "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime())) + "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t"); printQueue(store.getFifoId());
+            System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"   \t---" +"\t"+store.getOpenString()+ "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime())) + "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t"+toArrayString(store.getFifoId()));
         }
         else if(store.getCurrentEvent() instanceof Stop){
             //printResults();
             System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName());
         }
         else if(store.getCurrentEvent() instanceof Arrival){
-            System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"  \t"+store.getCurrentCustomer().getID()+"\t"+store.getOpenString() + "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime()))+ "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t");printQueue(store.getFifoId());
+            System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"  \t"+store.getCurrentCustomer().getID()+"\t"+store.getOpenString() + "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime()))+ "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t"+toArrayString(store.getFifoId()));
         }
         else if(store.getCurrentEvent() instanceof Pay){
-            System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"\t"+store.getCurrentCustomer().getID()+"\t"+store.getOpenString()+ "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime()))+ "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t");printQueue(store.getFifoId());
+            System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"\t"+store.getCurrentCustomer().getID()+"\t"+store.getOpenString()+ "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime()))+ "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t"+toArrayString(store.getFifoId()));
         }
         else if(store.getCurrentEvent() instanceof PickUp){
-                System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"     \t"+store.getCurrentCustomer().getID()+"\t"+store.getOpenString()+ "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime()))+ "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t");printQueue(store.getFifoId());
+                System.out.println((String.format("%.2f", store.getCurrentEvent().getTime()))+"\t"+store.getCurrentEvent().getName()+"     \t"+store.getCurrentCustomer().getID()+"\t"+store.getOpenString()+ "\t" + store.getVacantRegi()+"\t"+(String.format("%.2f", store.getVacantTime()))+ "\t" + store.getpeopleInStore()+ "\t" + store.getCustDone()+ "\t" + store.getMissed()+"\t"+ store.getAmountOfCustQueue()+"\t"+(String.format("%.2f", store.getQueueTime()))+"\t"+store.getQueueAmount()+"\t"+toArrayString(store.getFifoId()));
         }
         
         
     }
-    private void printQueue(int[]array){
-        System.out.print("[");
+    private String toArrayString (int[]array){
+        String string = "[";
         for(int i=0; i<array.length;i++){
-            System.out.print(array[i]+",");
+            if(i==0){
+                string = string+array[i];
+            } else{
+                string = string+","+array[i];
+            }
+            
         }
-        System.out.print("]");
+        string = string +"]";
+        return string;
     }
     
     
