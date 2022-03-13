@@ -9,6 +9,9 @@ import Labb5.simulator.*;
 /**
 * @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
+/** 
+Runs The simulation calculating the the least amount of cashiers required to get the most amount of customers
+*/
 
 import java.util.Random;
 
@@ -23,7 +26,7 @@ public class Optimize {
 
     /**
     @param runs the simulator with the decided parameters
-    @returns specificstate
+    @return specificstate
     */ 
     private static StoreState OptimizeRun(int cash, long seed) {
 
@@ -66,7 +69,7 @@ public class Optimize {
 
     /**
     @param Runs a loop with a set seed and tests what amount of cashierss are the optimal nuber
-    @returns registeramount
+    @return registeramount
     */
 
     private static int RequiredCheckout(long seed){
