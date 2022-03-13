@@ -2,17 +2,17 @@ package Labb5.simulator;
 
 import java.util.NoSuchElementException;
 
-/*
-*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+/** 
+*@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
-/*
+/** 
 The class that runs the simulation.
 */
 public class Simulator {
     private SimState state;
     private EventQueue queue;
-    /*
+    /** 
     Constructor that sets which queue and store to be used.
     @param queue, the eventqueue.
     @param state, the state that is being used.
@@ -26,7 +26,7 @@ public class Simulator {
     }
     
 
-    /*
+    /** 
     method that runs the simulation, and will continue to execute events aslong as the variable
     SimStop is false.
     */

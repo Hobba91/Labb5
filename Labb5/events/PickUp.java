@@ -6,17 +6,17 @@ import Labb5.simulator.SimState;
 import Labb5.state.Customer;
 import Labb5.state.StoreState;
 
-/*
-*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+/**
+* @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
-/*
+/**
 Class that will create a new Pay event if queue is empty, or add customer to queue.
 */
 public class PickUp extends Event{
     private StoreState store;
     private Customer customer;
-    /*
+    /**
     a constructor that sets the time it takes to pick up something, also which customer and store is being "handled".
     @param time, the pickup time.
     @param store, the store being used.
@@ -26,7 +26,7 @@ public class PickUp extends Event{
         this.customer = customer;
         this.store = store;
     }
-    /*
+    /**
     creates a new pickup event, which in turn creates a new pay event if a register is available.
     @param queue, the current eventqueue.
     @param state, the current state that is being "used".
@@ -45,21 +45,21 @@ public class PickUp extends Event{
         }
         
     }
-    /*
+    /**
     @return returns the currnt time
     */
     @Override
     public double getTime() {
         return time;
     }
-    /*
+    /**
     @return returns the name of the class.
     */
     @Override
     public String getName() {
         return "Plock";
     }
-	/*
+	/**
     @return the current customer that is being handled.
     */
     public Customer getCustomer() {

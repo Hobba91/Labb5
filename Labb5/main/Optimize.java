@@ -6,8 +6,8 @@ import Labb5.events.Start;
 import Labb5.events.Stop;
 import Labb5.simulator.*;
 
-/*
-*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+/**
+* @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
 import java.util.Random;
@@ -21,7 +21,7 @@ public class Optimize {
 
     }
 
-    /*
+    /**
     @param runs the simulator with the decided parameters
     @returns specificstate
     */ 
@@ -64,7 +64,7 @@ public class Optimize {
 
     }
 
-    /*
+    /**
     @param Runs a loop with a set seed and tests what amount of cashierss are the optimal nuber
     @returns registeramount
     */
@@ -88,7 +88,7 @@ public class Optimize {
         return registeramount;
     }
     
-    /*
+    /**
     @param Creates multiple random nuber and sets them as seeds in RequiredCheckout, after that we svae what amount of cashiers was the best
     */
     private static void RandomRun(int seed){

@@ -12,8 +12,8 @@ import Labb5.events.Arrival;
 import Labb5.events.Close;
 import Labb5.events.Stop;
 
-/*
-*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+/** 
+*@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
 public class StoreView extends SimView{
@@ -21,7 +21,7 @@ public class StoreView extends SimView{
     private Pay pay;
     private PickUp pickUp;
     private Arrival arrival;
-    /*
+    /** 
     a constructor that sets which state is to be printed.
     @param state.
     */
@@ -30,7 +30,7 @@ public class StoreView extends SimView{
         this.store = (StoreState)state;
 
     }
-    /*
+    /** 
     updates the simulation whenever a new event happens, and prints it out.
     @param arg0, 
     @param f, the current event
@@ -40,7 +40,7 @@ public class StoreView extends SimView{
         
     }
 
-    /*
+    /** 
     prints the initial parameters of the simulation.
     */
     public void printParametrar (){
@@ -56,7 +56,7 @@ public class StoreView extends SimView{
         System.out.println("=======");
         System.out.println("Tid"+"\t"+"Händelse"+"\t"+"Kund"+"\t"+"?"+"\t"+"led"+"\t"+"ledT"+"\t"+"I"+"\t"+"$"+"\t"+":-("+"\t"+"köat"+"\t"+"köT"+"\t"+"köar"+"\t"+"[Kassakö..]");
     }
-    /*
+    /** 
     prints out the results of the simulation.
     */
     public void printResults (){ // (String.format("%.2f", (((store.getVacantTime()/store.gettotAmOfRegi())/(store.getLastPayTime()))*100))
@@ -68,7 +68,7 @@ public class StoreView extends SimView{
         System.out.println("betalat)."); 
         System.out.println("\n3) Total tid "+ store.getAmountOfCustQueue() + " kunder tvingats köa: " + (String.format("%.2f", store.getQueueTime())) + " te.\nGenomsnittlig kötid: " + (String.format("%.2f", (store.getQueueTime() / store.getAmountOfCustQueue()))) + " te."); // te = tidsenheter.
     }
-    /*
+    /** 
     will print information everytime a new event is being executed. And prints all the variables connected to the simulation.
     */
     public void printCurrentEvent(){

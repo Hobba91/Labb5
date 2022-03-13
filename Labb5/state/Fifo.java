@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import Labb5.state.Customer;
 
-/*
-*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+/** 
+*@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
- /*
+ /** 
 Class that represents the customer queue.
 */
 class FIFO {
@@ -17,28 +17,28 @@ class FIFO {
     ArrayList<Customer> queue = new ArrayList<Customer>();
     private int peopleInLineTotal = 0;
 
-    /*
+    /** 
     @return returns the current size of the queue.
     */
     public int size(){
         return queue.size();
     }
 
-    /*
+    /** 
     @return maxSize, returns the maxsize of the customer queue.
     */
     public int maxsize(){
         return maxSize;
     }
 
-    /*
+    /** 
     @return returns true if customer queue is empty, false if not.
     */
     public boolean isEmpty(){
         return queue.size() == 0;
     }
 
-    /*
+    /** 
     @return returns the first customer in the customer queue.
     */
     public Customer first() {
@@ -47,7 +47,7 @@ class FIFO {
         }
         return queue.get(0);
     }
-    /*
+    /** 
     @param n, get customer in postition n
     @return returns the customer in location n if it exists.
     */
@@ -58,7 +58,7 @@ class FIFO {
         return queue.get(n);
     }
 
-    /*
+    /** 
     @return string, takes all the customers in the queue and turn them into a single string.
     */
     public String toString() {
@@ -73,7 +73,7 @@ class FIFO {
         return string;
     }
     
-    /*
+    /** 
     adds a customer and increases the size of the customer queue.
     */
     public void add(Customer item) {
@@ -84,7 +84,7 @@ class FIFO {
         }
     }
 
-    /*
+    /** 
     removes the first customer in the customer queue.
     */
     public void removeFirst() {
@@ -94,20 +94,20 @@ class FIFO {
         queue.remove(0);
     }
 
-    /*
+    /** 
     @return inLineTime, returns the time that the registers have been free or vacant.
     */
     public double getInLineTime() {
         return inLineTime;
     }
 
-    /*
+    /** 
     @return returns the amount of customers in the queue.
     */
     public int getPeopleInLineTotal() {
         return queue.size();
     }
-    /*
+    /** 
     @param time, determines how long the queue is, depending on the amount of people.
     */
     public void incinLineTime(double time) {

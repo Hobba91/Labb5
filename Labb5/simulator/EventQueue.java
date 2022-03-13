@@ -3,17 +3,17 @@ package Labb5.simulator;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-/*
-*@authors Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+/** 
+*@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
-/*
+/** 
 Class that will add and sort events based on the time they are set to occur.
 */
 public class EventQueue {
     ArrayList<Event> queue = new ArrayList<Event>();
 
-	/*
+	/** 
 	method to add a event to the eventqueue.
     @param event, adds a event to the eventqueue.
     */
@@ -30,7 +30,7 @@ public class EventQueue {
 			}
 		}
 	}
-	/*
+	/** 
 	
     @return returns true if queue is empty, otherwise false.
     */
@@ -42,7 +42,7 @@ public class EventQueue {
 		}
 	}
 
-	/*
+	/** 
     
 	@return returns the first event in the eventqueue.
     */
@@ -53,7 +53,7 @@ public class EventQueue {
 			return queue.get(0);
 		}
 	}
-	/*
+	/** 
     removes the first event in the eventqueue
     */
 	public void removeFirst(){
