@@ -35,6 +35,7 @@ public class Stop extends Event{
         
     }
     /**
+    gives the time of the action
     @return returns the current time
     */
     @Override
@@ -42,6 +43,7 @@ public class Stop extends Event{
         return time;
     }
     /**
+    gives the name of the class
     @return returns the name of the class.
     */
     @Override
