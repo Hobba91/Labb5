@@ -13,7 +13,7 @@ public class EventQueue {
 	creates a "node" that we will store our events in
 	/**
 	the storage of all que
-	 */	 */ 
+	 */	
 	private class Node {
         private Event event;
         private Node next;
