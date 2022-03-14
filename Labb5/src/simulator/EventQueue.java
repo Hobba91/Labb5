@@ -39,7 +39,7 @@ public class EventQueue {
 
         Node current = head;
         Node prev = null;
-
+	// loopar igenom  alla våra 
         while (true) {
  
             if (current.next == null) {
@@ -48,11 +48,11 @@ public class EventQueue {
                 return;
             }
 
-
+			//sätter detta event till det innan samt så blir nästa event current
             prev = current;
             current = current.next;
 
-
+			// sparar tiden
             if (event.getTime() < current.event.getTime()) {
                 prev.next = new Node(event);
                 prev.next.next = current;

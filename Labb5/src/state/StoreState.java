@@ -74,12 +74,14 @@ public class StoreState extends SimState{
 
     //kollar om affären är öppen eller stängd
     /** 
+    boolean to see if store is open
     @return true if the store is open
     */
     public boolean getOpen(){
       return open;
     }
     /** 
+    used to get the letter in the result
     @return Ö if open, S if closed
     */
     public String getOpenString(){
@@ -90,35 +92,41 @@ public class StoreState extends SimState{
         }
     }
     /** 
+    boolean to know if store is open
     @param variable is true if you want to open store, false if close.
     */
     public void SetOpen (boolean newOpen){
         this.open = newOpen;
     }
     /** 
+    get the maximum amount of people allowed in the store.
     @return The maximum amount of people allowed in store
     */
     public int getMaxPeople(){
         return maxpeople;    }
     /**  
+    get the amount of cashiers in the store.
     @return amount of cashiers in store.
     */
     public int getCashiers(){
         return cashiers;
     }
     /** 
+    gives the size of the customer queue.
     @return the size of the customer queue
     */
     public int getQueueLine(){
         return inLine.size();
     }
     /** 
-    @return the totalamount of registers in the store.
+    gives the total amount of registers in the store.
+    @return the total amount of registers in the store.
     */
     public int gettotAmOfRegi(){
         return totAmOfRegi;
     }
     /** 
+    gives the total amount of vacant registers.
     @return amount of vacant registers.
     */
     public int getVacantRegi(){
@@ -137,60 +145,70 @@ public class StoreState extends SimState{
         this.vacantRegi--;
     }
     /** 
+    gives a String with all the customers in the queue.
     @return a String with all the customers in the queue.
     */
     public String getQueue(){
         return inLine.toString();
     }
     /** 
+    gets the speed which customers arrive with.
     @return the speed which customers arrive.
     */
     public double getlambda(){
         return lambda;
     }
     /** 
+    gets the minimum and maximum pay times.
     @return array with the minimum and maximum pay times.
     */
     public double[] getK(){
         return K;
     }
     /** 
+    gets the minimum and maximum pick times.
     @return a array with the minimum and maximum pick times
     */
     public double[] getP(){
         return P;
     }
     /** 
+    gets the seed that determines the "random" aspect.
     @return the seed witch determines the "random" aspect.
     */
     public long getSeed(){
         return seed;
     }
     /** 
+    gets the first customer in the customer queue.
     @return the first "customer" in the queue.
     */
     public Customer getNextInLine(){
         return inLine.first();
     }
     /** 
+    gets the current amount of people currently in the store.
     @return the current amount of people in the store.
     */
     public int getpeopleInStore(){
         return peopleInStore;
     }
     /** 
+    gets the total amount of customers that have come to the store.
     @return the total amount of customers that have come to the store.
     */
     public int gettotalAmountOfCustomer(){
         return totalAmountOfCustomer;
     }
     /** 
+    gets the amount of customers that have been missed
     @return the amount of customers that have been missed during the simulation.
     */
     public int getMissed(){
         return missedCust;
     }
     /** 
+    gets the current queue time.
     @return the current queue time..
     */
     public double getQueueTime(){
@@ -249,18 +267,21 @@ public class StoreState extends SimState{
         inLine.removeFirst();
     }
      /**  
+    gets the arrival time.
     @return the arrival time
     */ 
     public ExponentialRandomStream getArrivalTime(){
         return arrivalTime;
     }
       /** 
-    @returnthe pickup time
+    gets the time it takes to pick something up.
+    @return the pickup time
     */
     public UniformRandomStream getPickTime(){
         return pickTime;
     }
     /** 
+    gets the time it takes to pay for something.
     @return the pay time
     */
     public UniformRandomStream getPayTime(){
@@ -292,12 +313,14 @@ public class StoreState extends SimState{
         }
     }
     /** 
+    gets the time since laste customer finished a purchase.
     @return the time since last customer finished paying.
     */
     public double getLastPayTime(){
         return this.lastPayTime;
     }
     /** 
+    gets the current event thats taking place.
     @return currentEvent, the current event
     */
     public Event getCurrentEvent(){
@@ -306,31 +329,35 @@ public class StoreState extends SimState{
     
     //Returnerar true om affären är full
     /** 
-    @return true if store is full, false if not.
+    see if the store is full or not.
+    @return true if store is full false if not.
     */
     public boolean isFull(){
         return(peopleInStore>=maxpeople);
     }
     /** 
+    gest the current amount of customers who are "done" shopping.
     @return the amount of customers who are "done" with their shopping.
     */
     public int getCustDone(){
         return custDone;
     }
     /**  
+    gets the amount of time the cashiers have been vacant.
     @return The amount of time cashiers have been vacant.
     */
     public double getVacantTime(){
         return vacantTime;
     }
     /** 
-    @param The amount of time vacantime is increased by
     increases the vacant time
+    @param time, The amount of time vacantime is increased by
     */
     public void incVacantTime(double time){
         vacantTime += time;
     }
     /** 
+    creates a customer with help of customer factory
     @return returns a new customer.
     */
     public Customer createCustomer (){
@@ -338,12 +365,14 @@ public class StoreState extends SimState{
         return customer;
     }
     /** 
+    will get the amount in customer que
     @return the amount of customers in the customer queue.
     */
     public int getAmountOfCustQueue(){
         return amountOfCustQueue;
     }
     /** 
+    increases the amount of customers in que
     increases the current amount of customers in the customer queue.
     */
     public void incAmountOfCustQueue(){
@@ -357,18 +386,21 @@ public class StoreState extends SimState{
         this.currentCustomer = customer;
     }
     /** 
+    gets the current customer
     @return returns the current customer that is being "handled".
     */
     public Customer getCurrentCustomer(){
         return currentCustomer;
     }
     /** 
+    gets the total amount of people in queue
     @return returns the total amount of people who have been in the queue.
     */
     public int getQueueAmount(){
         return inLine.getPeopleInLineTotal();
     }
     /** 
+    calls Fifo for iDs of the customers
     @return returns a array with all the customers who are standing in the queue line.
     */
     public int[] getFifoId(){
