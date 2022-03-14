@@ -7,11 +7,12 @@ import Labb5.state.Customer;
 import Labb5.state.StoreState;
 
 /**
-Class that will create a new Pay event if queue is empty, or add customer to queue.
 * @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
-
+/**
+Class that will create a new Pay event if queue is empty, or add customer to queue.
+*/
 public class PickUp extends Event{
     private StoreState store;
     private Customer customer;

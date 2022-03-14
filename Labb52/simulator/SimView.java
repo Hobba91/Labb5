@@ -5,10 +5,12 @@ import java.util.Observer;
 import Labb5.simulator.SimState;
 
 /** 
-class that helps keep track of the state
 *@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
+/** 
+class that helps keep track of the state
+*/
 public class SimView  implements Observer{
     private SimState state;
     /** 

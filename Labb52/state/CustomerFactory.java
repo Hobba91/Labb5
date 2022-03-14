@@ -3,10 +3,12 @@ package Labb5.state;
 import Labb5.state.Customer;
 
 /**
- * Class that keeps track on the number of customers created.
 *@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
+/**
+Class that keeps track on the number of customers created.
+*/
 public class CustomerFactory {
     private int id = 0;
 

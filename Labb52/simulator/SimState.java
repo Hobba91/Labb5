@@ -3,9 +3,12 @@ package Labb5.simulator;
 import java.util.Observable;
 
 /** 
-The generall state that will start and stop the simulation.
 *@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
+
+/** 
+The generall state that will start and stop the simulation.
+*/ 
 
 public class SimState extends Observable {
 

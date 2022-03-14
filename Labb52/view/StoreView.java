@@ -13,9 +13,13 @@ import Labb5.events.Close;
 import Labb5.events.Stop;
 
 /** 
-A class that prints out information at the start of the simulation, when a event is being executed and at the end of the simulation.
 *@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
+/**
+A class that prints out information at the start of the simulation, when a event is being executed
+and at the end of the simulation.
+ */
+
 public class StoreView extends SimView{
     private StoreState store;
     private Pay pay;

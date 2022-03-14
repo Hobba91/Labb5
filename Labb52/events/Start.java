@@ -6,11 +6,12 @@ import Labb5.state.StoreState;
 import Labb5.simulator.SimState;
 
 /**
-Class that starts everything. Will open the store and create new arrival event.
 * @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
-
+/**
+Class that starts everything. Will open the store and create new arrival event.
+*/
 public class Start extends Event{
    private StoreState store;
 

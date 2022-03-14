@@ -7,11 +7,14 @@ import Labb5.simulator.SimState;
 import Labb5.state.Customer;
 
 /***
-Class that creates a customer and adds it the store.
-Also creates a new pickup event and adds it to the eventqueue.
+
 @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
+/***
+Class that creates a customer and adds it the store.
+Also creates a new pickup event and adds it to the eventqueue.
+*/
 public class Arrival extends Event{
     private StoreState store;
     Customer customer;

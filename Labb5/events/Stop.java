@@ -6,12 +6,10 @@ import Labb5.simulator.SimState;
 import Labb5.state.StoreState;
 
 /**
+Class that will stop the simulation after a set amount of time.
 * @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
-/**
-Class that will stop the simulation after a set amount of time.
-*/
 public class Stop extends Event{
     StoreState store;
     /**

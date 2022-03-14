@@ -1,10 +1,12 @@
 package Labb5.state;
 
 /** 
- * Creates a new customer "object".
 *@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
+/** 
+Creates a new customer "object".
+*/
 public class Customer{
 
     private int customerID;

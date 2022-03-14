@@ -6,8 +6,11 @@ import Labb5.simulator.SimState;
 import Labb5.state.StoreState;
 
 /**
-Class that sets when the store should close.
 * @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
+*/
+
+/**
+Class that sets when the store should close.
 */
 public class Close extends Event{
     StoreState store;

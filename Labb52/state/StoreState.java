@@ -1,25 +1,27 @@
 package Labb5.state;
 
 import java.util.ArrayList;
-
+import Labb5.state.ExponentialRandomStream;
+import Labb5.state.UniformRandomStream;
 import Labb5.simulator.SimState;
 import Labb5.simulator.Event;
-import Labb5.events.Arrival;
 import Labb5.events.Pay;
 import Labb5.events.Stop;
 
 /** 
- * A class that keeps track of the store and all the different variables that is connected to it.
 *@author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
+/** 
+A class that keeps track of the store and all the different variables that is connected to it.
+*/
 public class StoreState extends SimState{
     private CustomerFactory customerFactory;
     
     private int maxpeople;
     private double lambda;
     private long seed;
-    private CQUEUE inLine = new CQUEUE();
+    private FIFO inLine = new FIFO();
     private int peopleInStore = 0;
     private int totalAmountOfCustomer = 0;
     private double[] P;
@@ -211,7 +213,8 @@ public class StoreState extends SimState{
     increases the total amount of customers that have been missed
     */
     public void incmissedCust() {
-        this.missedCust++;
+        this.missedCust
+        ++;
     }
      /** 
     increases the time people have been queing
@@ -273,12 +276,7 @@ public class StoreState extends SimState{
     public void update(Event event) {
         this.currentEvent = event;
         if(!(this.currentEvent instanceof Stop)){
-            if(getOpen() ==false && this.currentEvent instanceof Arrival){
-
-            } else{
-                vacantTime += (currentEvent.getTime()-LastTime)*getVacantRegi();
-            }
-            
+            vacantTime += (currentEvent.getTime()-LastTime)*getVacantRegi();
         }
         incinLineTime(currentEvent.getTime()-LastTime);
         setChanged();

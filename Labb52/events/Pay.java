@@ -7,11 +7,13 @@ import Labb5.state.StoreState;
 import Labb5.state.Customer;
 
 /** 
-A class where customers will pay and marked as done after.
-Will also remove customer and reduce the queue by one after a customer is done.
 * @author Simon Ruskola, Gabriel Sundblad, Elmer Tallgren, Rasmus Svedberg
 */
 
+/** 
+A class where customers will pay and marked as done after.
+Will also remove customer and reduce the queue by one after a customer is done.
+*/
 public class Pay extends Event{
 	StoreState store;
 	Customer customer;
