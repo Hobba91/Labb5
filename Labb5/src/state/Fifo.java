@@ -17,6 +17,7 @@ class FIFO {
     private int peopleInLineTotal = 0;
 
     /** 
+    gives the current size of the que
     @return returns the current size of the queue.
     */
     public int size(){
@@ -24,6 +25,7 @@ class FIFO {
     }
 
     /** 
+    gives the maximum size of the customer que
     @return maxSize, returns the maxsize of the customer queue.
     */
     public int maxsize(){
@@ -31,6 +33,7 @@ class FIFO {
     }
 
     /** 
+    checks to se if the list is empty
     @return returns true if customer queue is empty, false if not.
     */
     public boolean isEmpty(){
@@ -38,6 +41,7 @@ class FIFO {
     }
 
     /** 
+    gives the Id of the first customer in que
     @return returns the first customer in the customer queue.
     */
     public Customer first() {
@@ -47,6 +51,7 @@ class FIFO {
         return queue.get(0);
     }
     /** 
+    gives a customer in a specific position
     @param n, get customer in postition n
     @return returns the customer in location n if it exists.
     */
@@ -58,6 +63,7 @@ class FIFO {
     }
 
     /** 
+    puts all the customers in a string
     @return string, takes all the customers in the queue and turn them into a single string.
     */
     public String toString() {
@@ -94,6 +100,7 @@ class FIFO {
     }
 
     /** 
+    gives the amount of time a register has been free
     @return inLineTime, returns the time that the registers have been free or vacant.
     */
     public double getInLineTime() {
@@ -101,6 +108,7 @@ class FIFO {
     }
 
     /** 
+    gives the amount of people in the que
     @return returns the amount of customers in the queue.
     */
     public int getPeopleInLineTotal() {

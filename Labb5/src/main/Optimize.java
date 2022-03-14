@@ -117,8 +117,10 @@ public class Optimize {
     }
 
     /**
-    @param runs the simulator with the decided parameters
-    @return specificstate
+     * runs the simulator with the decided parameters
+    @param cash  the amount of cashiers used in the store
+    @param seed  The seed tha gives all the random values.
+    @return state of the created simulation
     */ 
     private static StoreState OptimizeRun(int cash, long seed)  {
 
@@ -162,8 +164,9 @@ public class Optimize {
     }
 
     /**
-    @param Runs a loop with a set seed and tests what amount of cashierss are the optimal nuber
-    @return registeramount
+     * runs a loop with a set seed and tests what amount of cashierss are the optimal number
+    @param  seed seed that gives all the random values.
+    @return optimal number of cashiers
     */
 
     private static int RequiredCheckout(long seed){
@@ -189,7 +192,8 @@ public class Optimize {
     }
     
     /**
-    @param Creates multiple random nuber and sets them as seeds in RequiredCheckout, after that we svae what amount of cashiers was the best
+     * Creates multiple random nuber and sets them as seeds in RequiredCheckout, after that we svae what amount of cashiers was the best
+    @param seed that gives all the random values.
     */
     private static void RandomRun(int seed){
         Random random = new Random(seed);

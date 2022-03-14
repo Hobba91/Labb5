@@ -15,7 +15,8 @@ public class SimState extends Observable {
 
     /** 
     method to see if the simulation should continue or be stopped.
-    return simStop, 
+    @return simStop, 
+    
     */ 
     public boolean getSimStop (){
         return simStop;

@@ -19,6 +19,7 @@ public class CustomerFactory {
     }
     int customers =id;
     /**
+    creates a customer with its unique ID
     @return creates and returns a customer with its own ID.
     */
     public Customer createCustomer () {

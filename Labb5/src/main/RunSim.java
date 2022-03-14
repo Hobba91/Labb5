@@ -33,7 +33,7 @@ public class RunSim {
     public static final int CASHIERS = 2;   // Antalet kassor i simuleringen.
     public static final int MAXPEOPLE = 5; // Max antalet kunder som rymms i affären.
 
-
+    
     public static void main(String[] args){
         //
         

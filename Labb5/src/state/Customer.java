@@ -18,6 +18,7 @@ public class Customer{
         this.customerID = ID;
     }
     /** 
+    Gives The customers ID
     @return returns the customer id. 
     */
     public int getID (){

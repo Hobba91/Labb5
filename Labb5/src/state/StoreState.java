@@ -379,6 +379,7 @@ public class StoreState extends SimState{
         amountOfCustQueue++;
     }
     /** 
+    Sets the current customer
     @param The customer that is set
     updates the currentcustomer depending on the current customer that is being handled.
     */

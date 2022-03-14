@@ -11,7 +11,9 @@ public class EventQueue {
 	
 	/**
 	creates a "node" that we will store our events in
-	 */ 
+	/**
+	the storage of all que
+	 */	 */ 
 	private class Node {
         private Event event;
         private Node next;
@@ -65,6 +67,7 @@ public class EventQueue {
 
 	/**
 	Gets the first event from our queue
+	@return returns the first event.
 	 */
     public Event first() {
         
@@ -83,7 +86,8 @@ public class EventQueue {
     }
     
 	/**
-	checks to see if our que is emty
+	checks to see if our queue is emtpy
+	@return checks if the queue is empy
 	 */
     public boolean isEmpty() {
         return head.next == last;
